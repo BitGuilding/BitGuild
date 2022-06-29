@@ -17,7 +17,8 @@ contract ERC20Factory{
     //     string  _name;
     //     string _symbo;
     // }
-    mapping(address => address[]) public _USER_STD_REGISTRY_;
+    mapping(address => address[]) public _USER_STD_REGISTRY_1;
+    mapping(address => address[]) public _USER_STD_REGISTRY_2;
     event AdminChange(address indexed Admin, address indexed newAdmin);
     constructor(address _token,uint256 _fee)  public {
         admin = msg.sender;
@@ -39,20 +40,24 @@ contract ERC20Factory{
     }
     function creatBasisToken(address manager,uint256 _totalSupply,string memory _name, string memory _symbol,string memory _logo) public returns(address){
         address token = address(new BasisERC20(manager,_totalSupply,_name,_symbol,_logo));
-        _USER_STD_REGISTRY_[msg.sender].push(token);
+        _USER_STD_REGISTRY_1[msg.sender].push(token);
         ERC20(tokenaddress).transfer(admin,fee);
         return token;
     }
     function creatComplexToken(address manager,uint256 _totalSupply,uint256 _mintfee,uint256 _burnfee,uint256 _fee, uint256 _endtime,address[] memory minter,uint256[] memory minterfee,string memory _name, string memory _symbol,string memory _logo) public returns(address){
         address token = address(new ComplexERC20(manager,_totalSupply,_mintfee, _burnfee,_fee,_endtime,minter, minterfee,_name,_symbol,_logo));
-        _USER_STD_REGISTRY_[msg.sender].push(token);
+        _USER_STD_REGISTRY_2[msg.sender].push(token);
         ERC20(tokenaddress).transfer(admin,fee);
         return token;
     }
     
-    function getRegistry(address user) public view returns (address[] memory )
+    function getRegistry1(address user) public view returns (address[] memory )
     {
-        return _USER_STD_REGISTRY_[user];
+        return _USER_STD_REGISTRY_1[user];
+    }
+    function getRegistry2(address user) public view returns (address[] memory )
+    {
+        return _USER_STD_REGISTRY_2[user];
     }
 }
 
