@@ -10,7 +10,8 @@ contract AirDropFactory {
     address public admin;
     address public tokenaddress;
     uint public fee;
-    mapping(address => address[]) public _USER_STD_REGISTRY_;
+    mapping(address => address[]) public _USER_STD_REGISTRY_1;
+     mapping(address => address[]) public _USER_STD_REGISTRY_2;
    
     // ============ Events ============
 
@@ -38,7 +39,7 @@ contract AirDropFactory {
     }
      function createAirDrop(address manager, address _token) external returns (address ) {
         address _airdrop = address (new airdrop(manager,_token));
-        _USER_STD_REGISTRY_[msg.sender].push(_airdrop);
+        _USER_STD_REGISTRY_1[msg.sender].push(_airdrop);
         IERC20(tokenaddress).transfer(admin,fee);
         emit NewAirDrop(_airdrop, msg.sender, false);
         return _airdrop;
@@ -46,13 +47,17 @@ contract AirDropFactory {
     
     function createAirDropByOwner(address manager, address _token,uint256 _time) external returns (address ) {
         address _airdrop =address (new airdropbyowner(manager,_token,_time));
-        _USER_STD_REGISTRY_[msg.sender].push(_airdrop);
+        _USER_STD_REGISTRY_2[msg.sender].push(_airdrop);
         IERC20(tokenaddress).transfer(admin,fee);
         emit NewAirDrop(_airdrop, msg.sender, false);
         return _airdrop;
     }
-   function getRegistry(address user) public view returns (address[] memory )
+   function getRegistry1(address user) public view returns (address[] memory )
     {
-        return _USER_STD_REGISTRY_[user];
+        return _USER_STD_REGISTRY_1[user];
+    }
+    function getRegistry2(address user) public view returns (address[] memory )
+    {
+        return _USER_STD_REGISTRY_2[user];
     }
 }
