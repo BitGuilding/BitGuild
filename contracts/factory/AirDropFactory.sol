@@ -10,8 +10,8 @@ contract AirDropFactory {
     address public admin;
     address public tokenaddress;
     uint public fee;
-    mapping(address => address[]) public _USER_STD_REGISTRY_1;
-     mapping(address => address[]) public _USER_STD_REGISTRY_2;
+    mapping(address => address[]) public _AIRDROP_REGISTRY_1;
+     mapping(address => address[]) public _AIRDROP_REGISTRY_2;
    
     // ============ Events ============
 
