@@ -39,7 +39,7 @@ contract AirDropFactory {
     }
      function createAirDrop(address manager, address _token) external returns (address ) {
         address _airdrop = address (new airdrop(manager,_token));
-        _USER_STD_REGISTRY_1[msg.sender].push(_airdrop);
+        _AIRDROP_REGISTRY_1[msg.sender].push(_airdrop);
         IERC20(tokenaddress).transfer(admin,fee);
         emit NewAirDrop(_airdrop, msg.sender, false);
         return _airdrop;
@@ -47,7 +47,7 @@ contract AirDropFactory {
     
     function createAirDropByOwner(address manager, address _token,uint256 _time) external returns (address ) {
         address _airdrop =address (new airdropbyowner(manager,_token,_time));
-        _USER_STD_REGISTRY_2[msg.sender].push(_airdrop);
+        _AIRDROP_REGISTRY_2[msg.sender].push(_airdrop);
         IERC20(tokenaddress).transfer(admin,fee);
         emit NewAirDrop(_airdrop, msg.sender, false);
         return _airdrop;
