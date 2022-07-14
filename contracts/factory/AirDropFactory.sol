@@ -52,12 +52,10 @@ contract AirDropFactory {
         emit NewAirDrop(_airdrop, msg.sender, false);
         return _airdrop;
     }
-   function getRegistry1(address user) public view returns (address[] memory )
-    {
+   function getRegistry1(address user) public view returns (address[] memory ) {
         return _AIRDROP_REGISTRY_1[user];
     }
-    function getRegistry2(address user) public view returns (address[] memory )
-    {
+    function getRegistry2(address user) public view returns (address[] memory ) {
         return _AIRDROP_REGISTRY_2[user];
     }
 }
