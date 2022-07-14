@@ -51,12 +51,10 @@ contract ERC20Factory{
         return token;
     }
     
-    function getRegistry1(address user) public view returns (address[] memory )
-    {
+    function getRegistry1(address user) public view returns (address[] memory ) {
         return _USER_STD_REGISTRY_1[user];
     }
-    function getRegistry2(address user) public view returns (address[] memory )
-    {
+    function getRegistry2(address user) public view returns (address[] memory ) {
         return _USER_STD_REGISTRY_2[user];
     }
 }
