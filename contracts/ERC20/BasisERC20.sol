@@ -7,7 +7,6 @@ import "@openzeppelin/contracts/utils/Address.sol";
 import "@openzeppelin/contracts/utils/math/SafeMath.sol";
 
 
-
 contract BasisERC20 is ERC20{
     using SafeMath for uint256;
 
