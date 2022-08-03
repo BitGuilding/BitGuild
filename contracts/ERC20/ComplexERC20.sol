@@ -38,8 +38,9 @@ contract ComplexERC20 is ERC20{
     event AdminChange(address indexed Admin, address indexed newAdmin);
     
     constructor(address manager,uint256 _totalSupply,uint256 _mintfee,uint256 _burnfee,uint256 _fee,uint256 _endtime,
-    address[] memory minter,uint256[] memory minterfee,
-    string memory _name, string memory _symbol,string memory _logo)  public ERC20(_name, _symbol){
+        address[] memory minter,uint256[] memory minterfee,string memory _name, string memory _symbol,
+        string memory _logo) public ERC20(_name, _symbol){
+        
         admin = manager;
         feeto.push(manager);
         logo = _logo;
