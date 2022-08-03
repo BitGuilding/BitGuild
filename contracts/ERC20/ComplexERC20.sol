@@ -23,10 +23,12 @@ contract ComplexERC20 is ERC20{
     bool public feeflag = true;
     uint256 public typeofmint;
     uint256 public firsttotalSupply;
+    
     struct Checkpoint {
         uint32 fromBlock;
         uint96 votes;
     }
+    
     mapping (address => mapping (uint32 => Checkpoint)) public checkpoints;
     mapping (address => uint32) public numCheckpoints;
     mapping (uint32 => uint256) public mintamounts;
@@ -34,6 +36,7 @@ contract ComplexERC20 is ERC20{
     
     event DelegateVotesChanged(address indexed delegate, uint256 previousBalance, uint256 newBalance);
     event AdminChange(address indexed Admin, address indexed newAdmin);
+    
     constructor(address manager,uint256 _totalSupply,uint256 _mintfee,uint256 _burnfee,uint256 _fee,uint256 _endtime,
     address[] memory minter,uint256[] memory minterfee,
     string memory _name, string memory _symbol,string memory _logo)  public ERC20(_name, _symbol){
