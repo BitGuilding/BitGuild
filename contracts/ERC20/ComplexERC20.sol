@@ -12,9 +12,7 @@ contract ComplexERC20 is ERC20{
     using SafeMath for uint256;
     
     address public admin;
-    
     address[] public feeto;
-    
     string public logo;
     uint256 public fee;
     uint256 public burnfee;
