@@ -8,8 +8,6 @@ import "../lib/TransferHelper.sol";
 import {Context} from "./airdrop.sol";
 
 
-
-
 contract airdropbyowner is Context {
     using SafeMath for uint256;
     address public admin;
