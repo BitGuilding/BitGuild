@@ -101,5 +101,10 @@ contract airdropbyowner is Context {
         return userallowances[_addresses].amounts ;
         
     }
+    
+    function getnumber(address _addresses) external view returns (uint256){
+        
+        return number ;
+    }
  
 }
